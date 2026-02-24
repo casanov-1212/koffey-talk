@@ -1,0 +1,753 @@
+/* Variables néomorphiques raffinées */
+/* Variables néomorphiques raffinées */
+/* Variables néomorphiques - Argent & Bleu Nuit */
+:root {
+  /* Palette principale - Luxe moderne (fond plus doux) */
+  --primary-base: #e3e6eb;   /* Gris perle doux */
+  --secondary-base: #d6dae2; /* Gris froid élégant */
+  --tertiary-base: #f0f1f4;  /* Argent clair */
+  --surface-base: #e9ecf1;   /* Gris bleuté subtil */
+  
+  /* Ombres néomorphiques */
+  --shadow-inset: inset 8px 8px 16px rgba(140, 150, 170, 0.25), 
+                  inset -8px -8px 16px rgba(255, 255, 255, 0.85);
+  --shadow-outset: 8px 8px 16px rgba(140, 150, 170, 0.25), 
+                   -8px -8px 16px rgba(255, 255, 255, 0.85);
+  --shadow-pressed: inset 6px 6px 12px rgba(140, 150, 170, 0.3), 
+                    inset -6px -6px 12px rgba(255, 255, 255, 0.9);
+  --shadow-floating: 12px 12px 24px rgba(140, 150, 170, 0.25),
+                     -12px -12px 24px rgba(255, 255, 255, 0.8);
+  
+  /* Accents luxe */
+  --accent-primary: #2f3e5c;   /* Bleu nuit profond */
+  --accent-secondary: #6c84a4; /* Bleu acier clair */
+  --accent-success: #3f8f85;   /* Vert jade sombre */
+  --accent-warning: #c9a24a;   /* Or discret */
+  --accent-error: #b74a4a;     /* Rouge grenat */
+  
+  /* Texte */
+  --text-primary: #1c1c1c;     /* Noir profond */
+  --text-secondary: #383838;   /* Gris anthracite */
+  --text-muted: #656565;       /* Gris doux */
+  --text-light: #9a9a9a;       /* Gris clair */
+  --text-accent: var(--accent-primary);
+  
+  /* Transitions */
+  --transition-smooth: 300ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --transition-bounce: 400ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  --transition-elastic: 600ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  
+  /* Arrondis */
+  --radius-soft: 12px;
+  --radius-medium: 18px;
+  --radius-large: 24px;
+  --radius-pill: 50px;
+}
+
+/* Reset et fondations */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: linear-gradient(135deg, var(--primary-base) 0%, var(--secondary-base) 100%);
+  color: var(--text-primary);
+  line-height: 1.6;
+  min-height: 100vh;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  height: 100vh;
+  background: var(--primary-base);
+}
+
+/* Application principale */
+.App {
+  text-align: center;
+  background: var(--primary-base);
+  min-height: 100vh;
+}
+
+.App-header {
+  background: linear-gradient(135deg, 
+    var(--primary-base) 0%, 
+    var(--secondary-base) 100%
+  );
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(16px + 1vmin);
+  color: var(--text-primary);
+  position: relative;
+}
+
+.App-link {
+  color: var(--accent-primary);
+  text-decoration: none;
+  transition: var(--transition-smooth);
+  font-weight: 500;
+}
+
+.App-link:hover {
+  color: var(--accent-secondary);
+}
+
+/* Conteneur principal néomorphique */
+.container {
+  width: 100%;
+  max-width: 1400px;
+  margin: 20px auto;
+  height: calc(100vh - 40px);
+  display: flex;
+  background: var(--primary-base);
+  border-radius: var(--radius-large);
+  overflow: hidden;
+  box-shadow: var(--shadow-floating);
+  position: relative;
+}
+
+/* Sidebar néomorphique */
+.sidebar {
+  width: 360px;
+  min-width: 360px;
+  background: var(--primary-base);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  position: relative;
+  flex-shrink: 0;
+  z-index: 100;
+}
+
+.sidebar::after {
+  content: '';
+  position: absolute;
+  top: 20px;
+  right: 0;
+  bottom: 20px;
+  width: 1px;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(163, 177, 198, 0.2) 20%,
+    rgba(163, 177, 198, 0.2) 80%,
+    transparent
+  );
+}
+
+.sidebar-header {
+  padding: 24px;
+  background: var(--primary-base);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: var(--radius-soft);
+  margin: 16px;
+  box-shadow: var(--shadow-outset);
+  position: relative;
+}
+
+.sidebar-header h2 {
+  color: var(--text-primary);
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+/* Boutons néomorphiques */
+.btn {
+  border: none;
+  border-radius: var(--radius-soft);
+  padding: 12px 24px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  transition: var(--transition-smooth);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  position: relative;
+  min-height: 44px;
+  background: var(--primary-base);
+  color: var(--text-primary);
+  box-shadow: var(--shadow-outset);
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-floating);
+}
+
+.btn:active {
+  transform: translateY(0);
+  box-shadow: var(--shadow-pressed);
+  transition: var(--transition-bounce);
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, 
+    var(--accent-primary) 0%, 
+    var(--accent-secondary) 100%
+  );
+  color: white;
+  box-shadow: 8px 8px 16px rgba(99, 102, 241, 0.3), 
+              -8px -8px 16px rgba(255, 255, 255, 0.8);
+}
+
+.btn-primary:hover {
+  box-shadow: 12px 12px 24px rgba(99, 102, 241, 0.4),
+              -12px -12px 24px rgba(255, 255, 255, 0.6);
+}
+
+.btn-secondary {
+  background: var(--primary-base);
+  color: var(--text-secondary);
+}
+
+/* Champs de saisie néomorphiques */
+.input {
+  width: 100%;
+  padding: 16px 20px;
+  border: none;
+  border-radius: var(--radius-soft);
+  font-size: 14px;
+  line-height: 1.5;
+  transition: var(--transition-smooth);
+  background: var(--primary-base);
+  color: var(--text-primary);
+  box-shadow: var(--shadow-inset);
+  min-height: 48px;
+  font-weight: 500;
+}
+
+.input::placeholder {
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+.input:focus {
+  outline: none;
+  box-shadow: var(--shadow-inset), 
+              0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+
+.search-input {
+  width: 100%;
+  padding: 12px 18px;
+  border: none;
+  border-radius: var(--radius-pill);
+  font-size: 14px;
+  transition: var(--transition-smooth);
+  background: var(--primary-base);
+  color: var(--text-primary);
+  box-shadow: var(--shadow-inset);
+  min-height: 40px;
+  font-weight: 500;
+}
+
+.search-input:focus {
+  outline: none;
+  box-shadow: var(--shadow-inset),
+              0 0 0 2px rgba(99, 102, 241, 0.15);
+}
+
+.search-box {
+  padding: 16px 20px;
+  background: var(--primary-base);
+}
+
+/* Formulaires d'authentification */
+.auth-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, 
+    var(--primary-base) 0%, 
+    var(--secondary-base) 100%
+  );
+  padding: 20px;
+}
+
+.auth-card {
+  background: var(--primary-base);
+  padding: 48px;
+  border-radius: var(--radius-large);
+  box-shadow: var(--shadow-floating);
+  width: 100%;
+  max-width: 440px;
+  position: relative;
+}
+
+.auth-header {
+  text-align: center;
+  margin-bottom: 36px;
+}
+
+.auth-header h1 {
+  color: var(--text-primary);
+  font-size: 32px;
+  font-weight: 800;
+  margin-bottom: 8px;
+  letter-spacing: -1px;
+}
+
+.auth-header p {
+  color: var(--text-muted);
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.auth-form {
+  margin-bottom: 28px;
+}
+
+.form-group {
+  margin-bottom: 24px;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  font-size: 14px;
+  letter-spacing: 0.5px;
+}
+
+.auth-footer {
+  text-align: center;
+  margin-top: 28px;
+}
+
+.auth-footer a {
+  color: var(--accent-primary);
+  text-decoration: none;
+  font-weight: 600;
+  transition: var(--transition-smooth);
+}
+
+.auth-footer a:hover {
+  color: var(--accent-secondary);
+}
+
+/* Messages néomorphiques */
+.message {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.message.sent {
+  align-items: flex-end;
+}
+
+.message.received {
+  align-items: flex-start;
+}
+
+.message-bubble {
+  max-width: 65%;
+  padding: 16px 20px;
+  border-radius: var(--radius-soft);
+  position: relative;
+  word-wrap: break-word;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.message.sent .message-bubble {
+  background: linear-gradient(135deg, 
+    var(--accent-primary) 0%, 
+    var(--accent-secondary) 100%
+  );
+  color: white;
+  border-bottom-right-radius: 8px;
+  box-shadow: 8px 8px 16px rgba(99, 102, 241, 0.25),
+              -2px -2px 8px rgba(255, 255, 255, 0.1);
+}
+
+.message.received .message-bubble {
+  background: var(--primary-base);
+  color: var(--text-primary);
+  border-bottom-left-radius: 8px;
+  box-shadow: var(--shadow-outset);
+}
+
+.message-content {
+  margin-bottom: 6px;
+}
+
+.message-time {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.7);
+  text-align: right;
+  font-weight: 400;
+}
+
+.message.received .message-time {
+  color: var(--text-light);
+  text-align: left;
+}
+
+/* Zone de chat néomorphique */
+.chat-area {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: var(--secondary-base);
+  position: relative;
+}
+
+.chat-header {
+  padding: 20px 28px;
+  background: var(--secondary-base);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  border-radius: var(--radius-soft);
+  margin: 16px;
+  box-shadow: var(--shadow-outset);
+}
+
+.chat-header-info h3 {
+  color: var(--text-primary);
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 4px;
+  letter-spacing: -0.5px;
+}
+
+.chat-header-status {
+  font-size: 13px;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.chat-messages {
+  flex: 1;
+  padding: 20px 28px;
+  overflow-y: auto;
+  background: var(--secondary-base);
+}
+
+.chat-input-container {
+  padding: 20px 28px;
+  background: var(--secondary-base);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  border-radius: var(--radius-soft);
+  margin: 16px;
+  box-shadow: var(--shadow-outset);
+}
+
+.chat-input {
+  flex: 1;
+  padding: 14px 20px;
+  border: none;
+  border-radius: var(--radius-pill);
+  font-size: 14px;
+  resize: none;
+  max-height: 120px;
+  min-height: 48px;
+  background: var(--secondary-base);
+  color: var(--text-primary);
+  transition: var(--transition-smooth);
+  box-shadow: var(--shadow-inset);
+  font-weight: 500;
+}
+
+.chat-input:focus {
+  outline: none;
+  box-shadow: var(--shadow-inset),
+              0 0 0 2px rgba(99, 102, 241, 0.15);
+}
+
+.send-button {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-pill);
+  background: linear-gradient(135deg, 
+    var(--accent-primary) 0%, 
+    var(--accent-secondary) 100%
+  );
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  transition: var(--transition-bounce);
+  box-shadow: 8px 8px 16px rgba(99, 102, 241, 0.3),
+              -4px -4px 12px rgba(255, 255, 255, 0.6);
+}
+
+.send-button:hover {
+  transform: scale(1.05);
+  box-shadow: 12px 12px 24px rgba(99, 102, 241, 0.4),
+              -6px -6px 16px rgba(255, 255, 255, 0.8);
+}
+
+.send-button:active {
+  transform: scale(0.95);
+  box-shadow: var(--shadow-pressed);
+}
+
+/* Contacts néomorphiques */
+.contact-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-soft);
+  background: linear-gradient(135deg, 
+    var(--accent-primary) 0%, 
+    var(--accent-secondary) 100%
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 700;
+  font-size: 16px;
+  box-shadow: 6px 6px 12px rgba(99, 102, 241, 0.3),
+              -6px -6px 12px rgba(255, 255, 255, 0.8);
+  position: relative;
+}
+
+.contact-item {
+  padding: 16px 20px;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: var(--primary-base);
+  margin: 8px 16px;
+  border-radius: var(--radius-soft);
+  box-shadow: var(--shadow-outset);
+}
+
+.contact-item:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-floating);
+}
+
+.contact-item.active {
+  box-shadow: var(--shadow-pressed);
+  transform: none;
+}
+
+.contact-item.active::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 60%;
+  background: linear-gradient(to bottom, var(--accent-primary), var(--accent-secondary));
+  border-radius: 0 2px 2px 0;
+}
+
+.contact-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.contact-name {
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+  font-size: 15px;
+  letter-spacing: -0.2px;
+}
+
+.contact-last-message {
+  font-size: 13px;
+  color: var(--text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-weight: 500;
+}
+
+.contact-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+}
+
+.contact-time {
+  font-size: 12px;
+  color: var(--text-light);
+  font-weight: 500;
+}
+
+.unread-badge {
+  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+  color: white;
+  border-radius: var(--radius-pill);
+  padding: 4px 10px;
+  font-size: 11px;
+  font-weight: 700;
+  min-width: 20px;
+  text-align: center;
+  box-shadow: 4px 4px 8px rgba(99, 102, 241, 0.3),
+              -2px -2px 6px rgba(255, 255, 255, 0.8);
+}
+
+.online-indicator {
+  width: 14px;
+  height: 14px;
+  background: var(--accent-success);
+  border: 3px solid var(--primary-base);
+  border-radius: var(--radius-pill);
+  position: absolute;
+  bottom: -2px;
+  right: -2px;
+  box-shadow: 2px 2px 4px rgba(16, 185, 129, 0.3),
+              -2px -2px 4px rgba(255, 255, 255, 0.8);
+}
+
+/* Écran de bienvenue */
+.welcome-screen {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--secondary-base);
+  color: var(--text-muted);
+  text-align: center;
+  padding: 48px;
+}
+
+.welcome-screen h2 {
+  font-size: 28px;
+  margin-bottom: 16px;
+  color: var(--text-primary);
+  font-weight: 700;
+  letter-spacing: -1px;
+}
+
+.welcome-screen p {
+  font-size: 16px;
+  max-width: 420px;
+  line-height: 1.6;
+  font-weight: 500;
+}
+
+/* États vides */
+.empty-state {
+  text-align: center;
+  padding: 48px 24px;
+  color: var(--text-muted);
+}
+
+.empty-state h3 {
+  font-size: 18px;
+  margin-bottom: 12px;
+  color: var(--text-secondary);
+  font-weight: 700;
+}
+
+.empty-state p {
+  font-size: 15px;
+  margin-bottom: 24px;
+  font-weight: 500;
+}
+
+/* Scrollbars néomorphiques */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--primary-base);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, 
+    rgba(163, 177, 198, 0.3), 
+    rgba(163, 177, 198, 0.5)
+  );
+  border-radius: 4px;
+  box-shadow: inset 2px 2px 4px rgba(163, 177, 198, 0.2),
+              inset -2px -2px 4px rgba(191, 179, 179, 0.8);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to bottom, 
+    rgba(163, 177, 198, 0.4), 
+    rgba(163, 177, 198, 0.6)
+  );
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .container {
+    margin: 0;
+    border-radius: 0;
+    height: 100vh;
+  }
+  
+  .sidebar {
+    width: 100%;
+    position: absolute;
+    z-index: 1000;
+    transform: translateX(-100%);
+    transition: var(--transition-elastic);
+  }
+  
+  .sidebar.open {
+    transform: translateX(0);
+  }
+  
+  .auth-card {
+    padding: 36px 28px;
+    margin: 16px;
+  }
+  
+  .message-bubble {
+    max-width: 80%;
+  }
+}
+
+/* Animations d'entrée */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.contact-item {
+  animation: fadeInUp 0.3s ease-out;
+}
+
+/* Effets de focus améliorés */
+.btn:focus-visible,
+.input:focus-visible,
+.search-input:focus-visible,
+.chat-input:focus-visible {
+  outline: none;
+  box-shadow: var(--shadow-outset),
+              0 0 0 3px rgba(99, 102, 241, 0.2);
+}

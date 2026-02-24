@@ -1,0 +1,785 @@
+/* ===== THÈME WHATSAPP BRUN NÉOMORPHIQUE ===== */
+:root {
+  /* Palette principale - Brun chaleureux */
+  --primary-base: #ede0d4;    /* Brun sable doux */
+  --secondary-base: #e3d0c0;  /* Brun rosé */
+  --tertiary-base: #f5ede4;   /* Crème clair */
+  --surface-base: #e8d8c8;    /* Brun tiède */
+
+  /* Variables manquantes utilisées dans les composants */
+  --background-primary: #ede0d4;
+  --background-secondary: #e3d0c0;
+  --border-color: rgba(140, 90, 60, 0.2);
+  --hover-color: rgba(92, 61, 46, 0.08);
+  --danger-color: #b74a4a;
+  --primary-color: #5c3d2e;
+  --gray-200: rgba(92, 61, 46, 0.1);
+  --gray-400: #a08070;
+  --gray-500: #7a5c4a;
+  --text-disabled: #c4a898;
+  --transition-normal: 200ms ease;
+
+  /* Ombres néomorphiques brunes */
+  --shadow-inset: inset 8px 8px 16px rgba(160, 120, 90, 0.2),
+                  inset -8px -8px 16px rgba(255, 248, 240, 0.85);
+  --shadow-outset: 8px 8px 16px rgba(160, 120, 90, 0.2),
+                   -8px -8px 16px rgba(255, 248, 240, 0.85);
+  --shadow-pressed: inset 6px 6px 12px rgba(160, 120, 90, 0.25),
+                    inset -6px -6px 12px rgba(255, 248, 240, 0.9);
+  --shadow-floating: 12px 12px 24px rgba(160, 120, 90, 0.2),
+                     -12px -12px 24px rgba(255, 248, 240, 0.8);
+
+  /* Accents WhatsApp brun */
+  --accent-primary: #5c3d2e;    /* Brun profond */
+  --accent-secondary: #8b5e45;  /* Brun moyen */
+  --accent-success: #4a7c59;    /* Vert forêt */
+  --accent-warning: #c9922a;    /* Ambre */
+  --accent-error: #b74a4a;      /* Rouge grenat */
+  --accent-message: #6b4c3b;    /* Brun messages envoyés */
+
+  /* Texte */
+  --text-primary: #2c1a0e;      /* Brun très foncé */
+  --text-secondary: #4a3728;    /* Brun foncé */
+  --text-muted: #7a5c4a;        /* Brun moyen */
+  --text-light: #a08070;        /* Brun clair */
+  --text-accent: var(--accent-primary);
+
+  /* Transitions */
+  --transition-smooth: 300ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --transition-bounce: 400ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  --transition-elastic: 600ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+  /* Arrondis */
+  --radius-soft: 12px;
+  --radius-medium: 18px;
+  --radius-large: 24px;
+  --radius-pill: 50px;
+}
+
+/* Reset et fondations */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: linear-gradient(135deg, var(--primary-base) 0%, var(--secondary-base) 100%);
+  color: var(--text-primary);
+  line-height: 1.6;
+  min-height: 100vh;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  height: 100vh;
+  background: var(--primary-base);
+}
+
+/* Application principale */
+.App {
+  text-align: center;
+  background: var(--primary-base);
+  min-height: 100vh;
+}
+
+.App-header {
+  background: linear-gradient(135deg,
+    var(--primary-base) 0%,
+    var(--secondary-base) 100%
+  );
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(16px + 1vmin);
+  color: var(--text-primary);
+  position: relative;
+}
+
+.App-link {
+  color: var(--accent-primary);
+  text-decoration: none;
+  transition: var(--transition-smooth);
+  font-weight: 500;
+}
+
+.App-link:hover {
+  color: var(--accent-secondary);
+}
+
+/* Conteneur principal néomorphique */
+.container {
+  width: 100%;
+  max-width: 1400px;
+  margin: 20px auto;
+  height: calc(100vh - 40px);
+  display: flex;
+  background: var(--primary-base);
+  border-radius: var(--radius-large);
+  overflow: hidden;
+  box-shadow: var(--shadow-floating);
+  position: relative;
+}
+
+/* Sidebar néomorphique */
+.sidebar {
+  width: 360px;
+  min-width: 360px;
+  background: var(--primary-base);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  position: relative;
+  flex-shrink: 0;
+  z-index: 100;
+}
+
+.sidebar::after {
+  content: '';
+  position: absolute;
+  top: 20px;
+  right: 0;
+  bottom: 20px;
+  width: 1px;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(140, 90, 60, 0.2) 20%,
+    rgba(140, 90, 60, 0.2) 80%,
+    transparent
+  );
+}
+
+.sidebar-header {
+  padding: 24px;
+  background: var(--primary-base);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: var(--radius-soft);
+  margin: 16px;
+  box-shadow: var(--shadow-outset);
+  position: relative;
+}
+
+.sidebar-header h2 {
+  color: var(--text-primary);
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+/* Boutons néomorphiques */
+.btn {
+  border: none;
+  border-radius: var(--radius-soft);
+  padding: 12px 24px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  transition: var(--transition-smooth);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  position: relative;
+  min-height: 44px;
+  background: var(--primary-base);
+  color: var(--text-primary);
+  box-shadow: var(--shadow-outset);
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-floating);
+}
+
+.btn:active {
+  transform: translateY(0);
+  box-shadow: var(--shadow-pressed);
+  transition: var(--transition-bounce);
+}
+
+.btn-primary {
+  background: linear-gradient(135deg,
+    var(--accent-primary) 0%,
+    var(--accent-secondary) 100%
+  );
+  color: white;
+  box-shadow: 8px 8px 16px rgba(92, 61, 46, 0.3),
+              -8px -8px 16px rgba(255, 248, 240, 0.8);
+}
+
+.btn-primary:hover {
+  box-shadow: 12px 12px 24px rgba(92, 61, 46, 0.4),
+              -12px -12px 24px rgba(255, 248, 240, 0.6);
+}
+
+.btn-secondary {
+  background: var(--primary-base);
+  color: var(--text-secondary);
+}
+
+/* Champs de saisie néomorphiques */
+.input {
+  width: 100%;
+  padding: 16px 20px;
+  border: none;
+  border-radius: var(--radius-soft);
+  font-size: 14px;
+  line-height: 1.5;
+  transition: var(--transition-smooth);
+  background: var(--primary-base);
+  color: var(--text-primary);
+  box-shadow: var(--shadow-inset);
+  min-height: 48px;
+  font-weight: 500;
+}
+
+.input::placeholder {
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+.input:focus {
+  outline: none;
+  box-shadow: var(--shadow-inset),
+              0 0 0 3px rgba(92, 61, 46, 0.12);
+}
+
+.search-input {
+  width: 100%;
+  padding: 12px 18px;
+  border: none;
+  border-radius: var(--radius-pill);
+  font-size: 14px;
+  transition: var(--transition-smooth);
+  background: var(--primary-base);
+  color: var(--text-primary);
+  box-shadow: var(--shadow-inset);
+  min-height: 40px;
+  font-weight: 500;
+}
+
+.search-input:focus {
+  outline: none;
+  box-shadow: var(--shadow-inset),
+              0 0 0 2px rgba(92, 61, 46, 0.15);
+}
+
+.search-box {
+  padding: 16px 20px;
+  background: var(--primary-base);
+}
+
+/* Formulaires d'authentification */
+.auth-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg,
+    var(--primary-base) 0%,
+    var(--secondary-base) 100%
+  );
+  padding: 20px;
+}
+
+.auth-card {
+  background: var(--primary-base);
+  padding: 48px;
+  border-radius: var(--radius-large);
+  box-shadow: var(--shadow-floating);
+  width: 100%;
+  max-width: 440px;
+  position: relative;
+}
+
+.auth-header {
+  text-align: center;
+  margin-bottom: 36px;
+}
+
+.auth-header h1 {
+  color: var(--text-primary);
+  font-size: 32px;
+  font-weight: 800;
+  margin-bottom: 8px;
+  letter-spacing: -1px;
+}
+
+.auth-header p {
+  color: var(--text-muted);
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.auth-form {
+  margin-bottom: 28px;
+}
+
+.form-group {
+  margin-bottom: 24px;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  font-size: 14px;
+  letter-spacing: 0.5px;
+}
+
+.auth-footer {
+  text-align: center;
+  margin-top: 28px;
+}
+
+.auth-footer a {
+  color: var(--accent-primary);
+  text-decoration: none;
+  font-weight: 600;
+  transition: var(--transition-smooth);
+}
+
+.auth-footer a:hover {
+  color: var(--accent-secondary);
+}
+
+/* Messages néomorphiques */
+.message {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.message.sent {
+  align-items: flex-end;
+}
+
+.message.received {
+  align-items: flex-start;
+}
+
+.message-bubble {
+  max-width: 65%;
+  padding: 16px 20px;
+  border-radius: var(--radius-soft);
+  position: relative;
+  word-wrap: break-word;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.message.sent .message-bubble {
+  background: linear-gradient(135deg,
+    var(--accent-primary) 0%,
+    var(--accent-secondary) 100%
+  );
+  color: white;
+  border-bottom-right-radius: 8px;
+  box-shadow: 8px 8px 16px rgba(92, 61, 46, 0.25),
+              -2px -2px 8px rgba(255, 248, 240, 0.1);
+}
+
+.message.received .message-bubble {
+  background: var(--primary-base);
+  color: var(--text-primary);
+  border-bottom-left-radius: 8px;
+  box-shadow: var(--shadow-outset);
+}
+
+.message-content {
+  margin-bottom: 6px;
+}
+
+.message-time {
+  font-size: 11px;
+  color: rgba(255, 248, 240, 0.75);
+  text-align: right;
+  font-weight: 400;
+}
+
+.message.received .message-time {
+  color: var(--text-light);
+  text-align: left;
+}
+
+/* Zone de chat néomorphique */
+.chat-area {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: var(--secondary-base);
+  position: relative;
+}
+
+/* Fond style WhatsApp avec motif brun visible */
+  .chat-messages,
+.welcome-screen {
+  background-color: #c4976a !important;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3C!-- Grain de café 1 --%3E%3Cellipse cx='20' cy='20' rx='8' ry='5' fill='%235c3d2e' opacity='0.15' transform='rotate(-30 20 20)'/%3E%3Cellipse cx='20' cy='20' rx='4' ry='2' fill='%235c3d2e' opacity='0.1' transform='rotate(-30 20 20)'/%3E%3C!-- Bulle chat 1 --%3E%3Crect x='50' y='8' width='30' height='18' rx='6' fill='%235c3d2e' opacity='0.1'/%3E%3Cpolygon points='55,26 50,32 62,26' fill='%235c3d2e' opacity='0.1'/%3E%3C!-- Tasse 1 --%3E%3Crect x='80' y='50' width='28' height='20' rx='4' fill='%235c3d2e' opacity='0.1'/%3E%3Cpath d='M108 55 Q118 55 118 62 Q118 69 108 69' stroke='%235c3d2e' stroke-width='3' fill='none' opacity='0.1'/%3E%3Cellipse cx='94' cy='52' rx='12' ry='3' fill='%238b5e45' opacity='0.08'/%3E%3C!-- Vapeur --%3E%3Cpath d='M88 48 Q90 42 88 36' stroke='%235c3d2e' stroke-width='2' fill='none' opacity='0.08' stroke-linecap='round'/%3E%3Cpath d='M96 47 Q98 40 96 33' stroke='%235c3d2e' stroke-width='2' fill='none' opacity='0.08' stroke-linecap='round'/%3E%3C!-- Grain de café 2 --%3E%3Cellipse cx='30' cy='80' rx='8' ry='5' fill='%235c3d2e' opacity='0.12' transform='rotate(20 30 80)'/%3E%3Cellipse cx='30' cy='80' rx='4' ry='2' fill='%235c3d2e' opacity='0.08' transform='rotate(20 30 80)'/%3E%3C!-- Éclair --%3E%3Cpath d='M60 60 L55 72 L60 72 L55 84' stroke='%23c9922a' stroke-width='2.5' fill='none' opacity='0.15' stroke-linecap='round' stroke-linejoin='round'/%3E%3C!-- Petits points déco --%3E%3Ccircle cx='10' cy='60' r='3' fill='%235c3d2e' opacity='0.1'/%3E%3Ccircle cx='110' cy='25' r='2' fill='%23c9922a' opacity='0.15'/%3E%3Ccircle cx='45' cy='100' r='3' fill='%235c3d2e' opacity='0.1'/%3E%3Ccircle cx='100' cy='100' r='2' fill='%23c9922a' opacity='0.12'/%3E%3C/svg%3E") !important;
+  background-size: 120px 120px !important;
+}
+
+
+
+.chat-header {
+  padding: 20px 28px;
+  background: var(--secondary-base);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  border-radius: var(--radius-soft);
+  margin: 16px;
+  box-shadow: var(--shadow-outset);
+}
+
+.chat-header-info h3 {
+  color: var(--text-primary);
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 4px;
+  letter-spacing: -0.5px;
+}
+
+.chat-header-status {
+  font-size: 13px;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.chat-input-container {
+  padding: 20px 28px;
+  background: var(--secondary-base);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  border-radius: var(--radius-soft);
+  margin: 16px;
+  box-shadow: var(--shadow-outset);
+}
+
+.chat-input {
+  flex: 1;
+  padding: 14px 20px;
+  border: none;
+  border-radius: var(--radius-pill);
+  font-size: 14px;
+  resize: none;
+  max-height: 120px;
+  min-height: 48px;
+  background: var(--primary-base);
+  color: var(--text-primary);
+  transition: var(--transition-smooth);
+  box-shadow: var(--shadow-inset);
+  font-weight: 500;
+}
+
+.chat-input:focus {
+  outline: none;
+  box-shadow: var(--shadow-inset),
+              0 0 0 2px rgba(92, 61, 46, 0.15);
+}
+
+.send-button {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-pill);
+  background: linear-gradient(135deg,
+    var(--accent-primary) 0%,
+    var(--accent-secondary) 100%
+  );
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  transition: var(--transition-bounce);
+  box-shadow: 8px 8px 16px rgba(92, 61, 46, 0.3),
+              -4px -4px 12px rgba(255, 248, 240, 0.6);
+}
+
+.send-button:hover {
+  transform: scale(1.05);
+  box-shadow: 12px 12px 24px rgba(92, 61, 46, 0.4),
+              -6px -6px 16px rgba(255, 248, 240, 0.8);
+}
+
+.send-button:active {
+  transform: scale(0.95);
+  box-shadow: var(--shadow-pressed);
+}
+
+/* Contacts néomorphiques */
+.contact-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-soft);
+  background: linear-gradient(135deg,
+    var(--accent-primary) 0%,
+    var(--accent-secondary) 100%
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 700;
+  font-size: 16px;
+  box-shadow: 6px 6px 12px rgba(92, 61, 46, 0.3),
+              -6px -6px 12px rgba(255, 248, 240, 0.8);
+  position: relative;
+}
+
+.contact-item {
+  padding: 16px 20px;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: var(--primary-base);
+  margin: 8px 16px;
+  border-radius: var(--radius-soft);
+  box-shadow: var(--shadow-outset);
+}
+
+.contact-item:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-floating);
+}
+
+.contact-item.active {
+  box-shadow: var(--shadow-pressed);
+  transform: none;
+}
+
+.contact-item.active::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 60%;
+  background: linear-gradient(to bottom, var(--accent-primary), var(--accent-secondary));
+  border-radius: 0 2px 2px 0;
+}
+
+.contact-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.contact-name {
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+  font-size: 15px;
+  letter-spacing: -0.2px;
+}
+
+.contact-last-message {
+  font-size: 13px;
+  color: var(--text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-weight: 500;
+}
+
+.contact-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+}
+
+.contact-time {
+  font-size: 12px;
+  color: var(--text-light);
+  font-weight: 500;
+}
+
+.unread-badge {
+  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+  color: white;
+  border-radius: var(--radius-pill);
+  padding: 4px 10px;
+  font-size: 11px;
+  font-weight: 700;
+  min-width: 20px;
+  text-align: center;
+  box-shadow: 4px 4px 8px rgba(92, 61, 46, 0.3),
+              -2px -2px 6px rgba(255, 248, 240, 0.8);
+}
+
+.online-indicator {
+  width: 14px;
+  height: 14px;
+  background: var(--accent-success);
+  border: 3px solid var(--primary-base);
+  border-radius: var(--radius-pill);
+  position: absolute;
+  bottom: -2px;
+  right: -2px;
+  box-shadow: 2px 2px 4px rgba(74, 124, 89, 0.3),
+              -2px -2px 4px rgba(255, 248, 240, 0.8);
+}
+
+/* Écran de bienvenue */
+.welcome-screen {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--secondary-base);
+  color: var(--text-muted);
+  text-align: center;
+  padding: 48px;
+}
+
+.welcome-screen h2 {
+  font-size: 28px;
+  margin-bottom: 16px;
+  color: var(--text-primary);
+  font-weight: 700;
+  letter-spacing: -1px;
+}
+
+.welcome-screen p {
+  font-size: 16px;
+  max-width: 420px;
+  line-height: 1.6;
+  font-weight: 500;
+}
+
+/* États vides */
+.empty-state {
+  text-align: center;
+  padding: 48px 24px;
+  color: var(--text-muted);
+}
+
+.empty-state h3 {
+  font-size: 18px;
+  margin-bottom: 12px;
+  color: var(--text-secondary);
+  font-weight: 700;
+}
+
+.empty-state p {
+  font-size: 15px;
+  margin-bottom: 24px;
+  font-weight: 500;
+}
+
+/* Scrollbars néomorphiques brunes */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--primary-base);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom,
+    rgba(140, 90, 60, 0.3),
+    rgba(140, 90, 60, 0.5)
+  );
+  border-radius: 4px;
+  box-shadow: inset 2px 2px 4px rgba(140, 90, 60, 0.2),
+              inset -2px -2px 4px rgba(255, 248, 240, 0.8);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to bottom,
+    rgba(140, 90, 60, 0.4),
+    rgba(140, 90, 60, 0.6)
+  );
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .container {
+    margin: 0;
+    border-radius: 0;
+    height: 100vh;
+  }
+
+  .sidebar {
+    width: 100%;
+    position: absolute;
+    z-index: 1000;
+    transform: translateX(-100%);
+    transition: var(--transition-elastic);
+  }
+
+  .sidebar.open {
+    transform: translateX(0);
+  }
+
+  .auth-card {
+    padding: 36px 28px;
+    margin: 16px;
+  }
+
+  .message-bubble {
+    max-width: 80%;
+  }
+}
+
+/* Animations d'entrée */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.contact-item {
+  animation: fadeInUp 0.3s ease-out;
+}
+
+/* Effets de focus améliorés */
+.btn:focus-visible,
+.input:focus-visible,
+.search-input:focus-visible,
+.chat-input:focus-visible {
+  outline: none;
+  box-shadow: var(--shadow-outset),
+              0 0 0 3px rgba(92, 61, 46, 0.2);
+}
+
+/* App.css de base */
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
