@@ -4,7 +4,7 @@ const {
   getMessages,
   getContacts,
   searchUsers
-} = require('../controllers/messageController');
+} = require('../Controllers/MessageController');
 const { authenticateToken } = require('../middleware/auth');
 const Message = require('../models/Message'); // Assurez-vous d'importer le modèle Message
 

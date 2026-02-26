@@ -34,7 +34,7 @@ const io = socketIo(server, {
   }
 });
 
-console.log('Serveur WhatsApp complet avec Socket.IO...');
+console.log('Serveur koffeytalks complet avec Socket.IO...');
 connectDB();
 
 // =================================
